@@ -9,6 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public float speed = 0;
     private Rigidbody rb;
+    private int count;
     private float movementX;
     private float movementY;
 
@@ -16,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>(); //The one attacthed to the gameObject
+        count = 0;
     }
 
     private void OnMove(InputValue movementValue)
@@ -36,6 +38,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pickup")) {
             other.gameObject.SetActive(false);
+            count = count + 1;
         }
     }
 }
