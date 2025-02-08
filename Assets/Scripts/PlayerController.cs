@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
+    public float speed = 0;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -28,6 +29,6 @@ public class NewBehaviourScript : MonoBehaviour
     private void FixedUpdate() //Called more frequently than Update()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed);
     }
 }
