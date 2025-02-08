@@ -11,6 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI winTextObject;
 
     private Rigidbody rb;
     private int count;
@@ -24,6 +25,8 @@ public class NewBehaviourScript : MonoBehaviour
         count = 0;
 
         SetCountText();
+        winTextObject.gameObject.SetActive(false);
+
     }
 
     private void OnMove(InputValue movementValue)
@@ -37,6 +40,11 @@ public class NewBehaviourScript : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
+        if (count >= 12)
+        {
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.text = "You win!";
+        }
     }
 
     private void FixedUpdate() //Called more frequently than Update()
@@ -44,6 +52,23 @@ public class NewBehaviourScript : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
     }
+
+    private void OnCOllisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //Destroy
+            Destroy(gameObject);
+
+            //Set the text to "You Lose!"
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
+
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+
+        }
+    }
+
 
     void OnTriggerEnter(Collider other)
     {
