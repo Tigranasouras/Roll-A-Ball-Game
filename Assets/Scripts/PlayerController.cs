@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
     private float movementX;
     private float movementY;
     public AudioSource pickupAudio;
-   // public AudioSource dieAudio;
+    public AudioSource winAudio;
 
 
 
@@ -33,7 +33,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         SetCountText();
         winTextObject.gameObject.SetActive(false);
-        pickupAudio = GetComponent<AudioSource>();
+        
        
 
     }
@@ -49,10 +49,11 @@ public class NewBehaviourScript : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 13)
         {
             winTextObject.gameObject.SetActive(true);
             winTextObject.text = "You win!";
+            winAudio.Play();
         }
     }
 
