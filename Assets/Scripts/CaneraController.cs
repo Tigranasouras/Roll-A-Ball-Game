@@ -16,6 +16,9 @@ public class CaneraController : MonoBehaviour
     // Update is called once per frame, but after the other updates are done
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
+        if (player != null)
+        {
+            transform.position = player.transform.position + offset;
+        }
     }
 }

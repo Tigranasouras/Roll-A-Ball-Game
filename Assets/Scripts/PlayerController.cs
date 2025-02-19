@@ -18,6 +18,9 @@ public class NewBehaviourScript : MonoBehaviour
     private float movementX;
     private float movementY;
     public AudioSource pickupAudio;
+   // public AudioSource dieAudio;
+
+
 
 
 
@@ -31,6 +34,7 @@ public class NewBehaviourScript : MonoBehaviour
         SetCountText();
         winTextObject.gameObject.SetActive(false);
         pickupAudio = GetComponent<AudioSource>();
+       
 
     }
 
@@ -62,14 +66,18 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            //Destroy
-            Destroy(gameObject);
+          // dieAudio.Play();
+          AudioSource enemyAudio = collision.gameObject.GetComponent<AudioSource>();
+            enemyAudio.Play();
+            
+            
 
             //Set the text to "You Lose!"
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You lose!";
-
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            //Destroy
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"), 0.3f);
+            Destroy(gameObject, 0.1f);
 
         }
     }

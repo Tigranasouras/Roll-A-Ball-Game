@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame.
-    void Update()
+    void FixedUpdate()
     {
         // If there's a reference to the player...
         if (player != null)
