@@ -17,6 +17,8 @@ public class NewBehaviourScript : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
+    public AudioSource pickupAudio;
+
 
 
 
@@ -28,6 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         SetCountText();
         winTextObject.gameObject.SetActive(false);
+        pickupAudio = GetComponent<AudioSource>();
 
     }
 
@@ -55,7 +58,7 @@ public class NewBehaviourScript : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-    private void OnCOllisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -75,10 +78,13 @@ public class NewBehaviourScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pickup")) {
+            pickupAudio.Play();
             other.gameObject.SetActive(false);
             count = count + 1;
 
             SetCountText();
+            //Debug.Log("Sound played: " + pickupAudio);
+            
         }
     }
 }
