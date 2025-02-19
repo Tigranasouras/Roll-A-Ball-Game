@@ -19,6 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
     private float movementY;
     public AudioSource pickupAudio;
     public AudioSource winAudio;
+    public AudioSource wallAudio;
 
 
 
@@ -81,6 +82,11 @@ public class NewBehaviourScript : MonoBehaviour
             Destroy(gameObject, 0.1f);
 
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            wallAudio.Play();
+        }
+
     }
 
 
