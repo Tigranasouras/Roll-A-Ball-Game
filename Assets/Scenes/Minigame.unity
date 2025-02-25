@@ -2495,7 +2495,9 @@ MonoBehaviour:
   winAudio: {fileID: 1392072419}
   wallAudio: {fileID: 1392072420}
   explosionFX: {fileID: 9163842254569548763, guid: fdb1ffad1b27547ceb1e6850752e6b86, type: 3}
-  pickupFX: {fileID: 239102534640359992, guid: d798f79c5ecf9a74eaefec51b14f8d75, type: 3}
+  pickupFX: {fileID: 953572193856364788, guid: 9c8d24fb98d50894fa5d3339b626dfcf, type: 3}
+  winFX: {fileID: 239102534640359992, guid: d798f79c5ecf9a74eaefec51b14f8d75, type: 3}
+  trailFX: {fileID: 9163842254569548763, guid: fdb1ffad1b27547ceb1e6850752e6b86, type: 3}
 --- !u!82 &1392072418
 AudioSource:
   m_ObjectHideFlags: 0

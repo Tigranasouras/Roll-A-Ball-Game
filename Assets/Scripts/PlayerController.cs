@@ -23,6 +23,8 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject explosionFX;
     public GameObject pickupFX;
 
+    public GameObject winFX;
+    public GameObject trailFX;
 
 
 
@@ -47,6 +49,9 @@ public class NewBehaviourScript : MonoBehaviour
 
         movementX = movementVector.x;
         movementY = movementVector.y;
+        var movementFX = Instantiate(trailFX, rb.transform.position, Quaternion.identity);
+        Destroy(movementFX, 10);
+
     }
 
     void SetCountText()
@@ -55,6 +60,10 @@ public class NewBehaviourScript : MonoBehaviour
         if (count >= 13)
         {
             winTextObject.gameObject.SetActive(true);
+            var winnerFX = Instantiate(winFX, rb.transform.position, Quaternion.identity);
+            Destroy(winnerFX, 50);
+
+
             winTextObject.text = "You win!";
             winAudio.Play();
         }
@@ -101,6 +110,7 @@ public class NewBehaviourScript : MonoBehaviour
             pickupAudio.Play();
 
             var currentPickupFX = Instantiate(pickupFX, other.transform.position, Quaternion.identity);
+
             Destroy(currentPickupFX, 3);
 
 
