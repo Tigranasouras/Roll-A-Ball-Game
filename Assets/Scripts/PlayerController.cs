@@ -20,6 +20,8 @@ public class NewBehaviourScript : MonoBehaviour
     public AudioSource pickupAudio;
     public AudioSource winAudio;
     public AudioSource wallAudio;
+    public GameObject explosionFX;
+    public GameObject pickupFX;
 
 
 
@@ -71,8 +73,11 @@ public class NewBehaviourScript : MonoBehaviour
           // dieAudio.Play();
           AudioSource enemyAudio = collision.gameObject.GetComponent<AudioSource>();
             enemyAudio.Play();
-            
-            
+
+            Instantiate(explosionFX, transform.position, Quaternion.identity);
+
+
+
 
             //Set the text to "You Lose!"
             winTextObject.gameObject.SetActive(true);
@@ -94,6 +99,11 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pickup")) {
             pickupAudio.Play();
+
+            var currentPickupFX = Instantiate(pickupFX, other.transform.position, Quaternion.identity);
+            Destroy(currentPickupFX, 3);
+
+
             other.gameObject.SetActive(false);
             count = count + 1;
 
