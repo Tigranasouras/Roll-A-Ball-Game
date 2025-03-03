@@ -25,6 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public GameObject winFX;
     public GameObject trailFX;
+    private GameObject enemy;
 
 
 
@@ -38,6 +39,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         SetCountText();
         winTextObject.gameObject.SetActive(false);
+        enemy = GameObject.FindWithTag("Enemy");
         
        
 
@@ -66,6 +68,7 @@ public class NewBehaviourScript : MonoBehaviour
 
             winTextObject.text = "You win!";
             winAudio.Play();
+            enemy.SetActive(false);
         }
     }
 
